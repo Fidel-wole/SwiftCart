@@ -1,0 +1,92 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <div class="overlay" data-overlay></div>
+
+    <%- include('../includes/nav.ejs') %>
+    <div class="product-container">
+
+      <div class="container">
+        <%- include('../includes/sidebar.ejs') %>
+    <div class="product-main">
+
+        <h2 class="title">Product details</h2>
+
+        <div class="product-grid">
+        
+            
+          <div class="showcase">
+            <div class="showcase-banner">
+
+              <img src="..<%= prods.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+              <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+
+              <p class="showcase-badge">15%</p>
+
+              <div class="showcase-actions">
+
+                <button class="btn-action">
+                  <ion-icon name="heart-outline"></ion-icon>
+                </button>
+
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="showcase-content">
+
+              <div class="showcase-category"><%= prods.title %></div>
+
+              <div>
+                <h3 class="showcase-title"><%= prods.description %></h3>
+              </div>
+
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+
+              <div class="price-box">
+                <p class="price">$<%= prods.price %>.00</p>
+                <del>$75.00</del>
+              </div>
+            <form action="/cart" method="post">
+              <button class="banner-btn" style="margin-bottom:0.6rem;">Add To Cart </button>
+              <input type="hidden" name="productId" value="<%= prods.id %>" >
+            </form>
+              
+            </div>
+          </div>          
+            <div class="showcase">
+            
+  
+         description
+            
+            
+          </div>
+          
+        </div>
+
+    </div>
+    
+    </div>
+    </div>
+    <%- include('../includes/footer.ejs') %>
+</body>
+</html>

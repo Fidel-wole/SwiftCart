@@ -1,4 +1,4 @@
-<%- include('includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       </button>
 
       <div class="newsletter-img">
-        <img src="./images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
+        <img src="../images/newsletter.png" alt="subscribe newsletter" width="400" height="400">
       </div>
 
       <div class="newsletter">
@@ -65,7 +65,7 @@
     </button>
 
     <div class="toast-banner">
-      <img src="./images/products/jewellery-1.jpg" alt="Rose Gold Earrings" width="80" height="70">
+      <img src="../images/products/jewellery-1.jpg" alt="Rose Gold Earrings" width="80" height="70">
     </div>
 
     <div class="toast-detail">
@@ -93,7 +93,7 @@
   <!--
     - HEADER
   -->
-<%- include('includes/nav.ejs') %>
+<%- include('../includes/nav.ejs') %>
   <!--
     - MAIN
   -->
@@ -112,7 +112,7 @@
 
           <div class="slider-item">
 
-            <img src="./images/banner-1.jpg" alt="women's latest fashion sale" class="banner-img">
+            <img src="../images/banner-1.jpg" alt="women's latest fashion sale" class="banner-img">
 
             <div class="banner-content">
 
@@ -132,7 +132,7 @@
 
           <div class="slider-item">
 
-            <img src="./images/banner-2.jpg" alt="modern sunglasses" class="banner-img">
+            <img src="../images/banner-2.jpg" alt="modern sunglasses" class="banner-img">
 
             <div class="banner-content">
 
@@ -152,7 +152,7 @@
 
           <div class="slider-item">
 
-            <img src="./images/banner-3.jpg" alt="new fashion summer sale" class="banner-img">
+            <img src="../images/banner-3.jpg" alt="new fashion summer sale" class="banner-img">
 
             <div class="banner-content">
 
@@ -193,7 +193,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/dress.svg" alt="dress & frock" width="30">
+              <img src="../images/icons/dress.svg" alt="dress & frock" width="30">
             </div>
 
             <div class="category-content-box">
@@ -213,7 +213,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/coat.svg" alt="winter wear" width="30">
+              <img src="../images/icons/coat.svg" alt="winter wear" width="30">
             </div>
 
             <div class="category-content-box">
@@ -233,7 +233,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/glasses.svg" alt="glasses & lens" width="30">
+              <img src="../images/icons/glasses.svg" alt="glasses & lens" width="30">
             </div>
 
             <div class="category-content-box">
@@ -253,7 +253,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/shorts.svg" alt="shorts & jeans" width="30">
+              <img src="../images/icons/shorts.svg" alt="shorts & jeans" width="30">
             </div>
 
             <div class="category-content-box">
@@ -273,7 +273,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/tee.svg" alt="t-shirts" width="30">
+              <img src="../images/icons/tee.svg" alt="t-shirts" width="30">
             </div>
 
             <div class="category-content-box">
@@ -293,7 +293,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/jacket.svg" alt="jacket" width="30">
+              <img src="../images/icons/jacket.svg" alt="jacket" width="30">
             </div>
 
             <div class="category-content-box">
@@ -313,7 +313,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/watch.svg" alt="watch" width="30">
+              <img src="../images/icons/watch.svg" alt="watch" width="30">
             </div>
 
             <div class="category-content-box">
@@ -333,7 +333,7 @@
           <div class="category-item">
 
             <div class="category-img-box">
-              <img src="./images/icons/hat.svg" alt="hat & caps" width="30">
+              <img src="../images/icons/hat.svg" alt="hat & caps" width="30">
             </div>
 
             <div class="category-content-box">
@@ -373,499 +373,11 @@
           - SIDEBAR
         -->
 
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
+<%- include('../includes/sidebar.ejs') %>
 
-          <div class="sidebar-category">
 
-            <div class="sidebar-top">
-              <h2 class="sidebar-title">Category</h2>
 
-              <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-            </div>
-
-            <ul class="sidebar-menu-category-list">
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/dress.svg" alt="clothes" width="20" height="20"
-                      class="menu-title-img">
-
-                    <p class="menu-title">Clothes</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shirt</p>
-                      <data value="300" class="stock" title="Available Stock">300</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">shorts & jeans</p>
-                      <data value="60" class="stock" title="Available Stock">60</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
-                      <data value="50" class="stock" title="Available Stock">50</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
-                      <data value="87" class="stock" title="Available Stock">87</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/shoes.svg" alt="footwear" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Footwear</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sports</p>
-                      <data value="45" class="stock" title="Available Stock">45</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Formal</p>
-                      <data value="75" class="stock" title="Available Stock">75</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Casual</p>
-                      <data value="35" class="stock" title="Available Stock">35</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Safety Shoes</p>
-                      <data value="26" class="stock" title="Available Stock">26</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/jewelry.svg" alt="clothes" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Jewelry</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Earrings</p>
-                      <data value="46" class="stock" title="Available Stock">46</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Couple Rings</p>
-                      <data value="73" class="stock" title="Available Stock">73</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Necklace</p>
-                      <data value="61" class="stock" title="Available Stock">61</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/perfume.svg" alt="perfume" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Perfume</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Clothes Perfume</p>
-                      <data value="12" class="stock" title="Available Stock">12 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Deodorant</p>
-                      <data value="60" class="stock" title="Available Stock">60 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">jacket</p>
-                      <data value="50" class="stock" title="Available Stock">50 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dress & frock</p>
-                      <data value="87" class="stock" title="Available Stock">87 pcs</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/cosmetics.svg" alt="cosmetics" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Cosmetics</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shampoo</p>
-                      <data value="68" class="stock" title="Available Stock">68</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sunscreen</p>
-                      <data value="46" class="stock" title="Available Stock">46</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Body Wash</p>
-                      <data value="79" class="stock" title="Available Stock">79</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Makeup Kit</p>
-                      <data value="23" class="stock" title="Available Stock">23</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/glasses.svg" alt="glasses" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Glasses</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Sunglasses</p>
-                      <data value="50" class="stock" title="Available Stock">50</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Lenses</p>
-                      <data value="48" class="stock" title="Available Stock">48</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="./images/icons/bag.svg" alt="bags" class="menu-title-img" width="20" height="20">
-
-                    <p class="menu-title">Bags</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Shopping Bag</p>
-                      <data value="62" class="stock" title="Available Stock">62</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Gym Backpack</p>
-                      <data value="35" class="stock" title="Available Stock">35</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Purse</p>
-                      <data value="80" class="stock" title="Available Stock">80</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Wallet</p>
-                      <data value="75" class="stock" title="Available Stock">75</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-            </ul>
-
-          </div>
-
-          <div class="product-showcase">
-
-            <h3 class="showcase-heading">best sellers</h3>
-
-            <div class="showcase-wrapper">
-
-              <div class="showcase-container">
-
-                <div class="showcase">
-
-                  <a href="#" class="showcase-img-box">
-                    <img src="./images/products/1.jpg" alt="baby fabric shoes" width="75" height="75"
-                      class="showcase-img">
-                  </a>
-
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">baby fabric shoes</h4>
-                    </a>
-
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>$5.00</del>
-                      <p class="price">$4.00</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="showcase">
-
-                  <a href="#" class="showcase-img-box">
-                    <img src="./images/products/2.jpg" alt="men's hoodies t-shirt" class="showcase-img"
-                      width="75" height="75">
-                  </a>
-
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">men's hoodies t-shirt</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star-half-outline"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>$17.00</del>
-                      <p class="price">$7.00</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="showcase">
-
-                  <a href="#" class="showcase-img-box">
-                    <img src="./images/products/3.jpg" alt="girls t-shirt" class="showcase-img" width="75"
-                      height="75">
-                  </a>
-
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">girls t-shirt</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star-half-outline"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>$5.00</del>
-                      <p class="price">$3.00</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-                <div class="showcase">
-
-                  <a href="#" class="showcase-img-box">
-                    <img src="./images/products/4.jpg" alt="woolen hat for men" class="showcase-img" width="75"
-                      height="75">
-                  </a>
-
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">woolen hat for men</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>$15.00</del>
-                      <p class="price">$12.00</p>
-                    </div>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
+         
 
 
         <div class="product-box">
@@ -887,7 +399,7 @@
                   <div class="showcase">
 
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/clothes-1.jpg" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
+                      <img src="../images/products/clothes-1.jpg" alt="relaxed short full sleeve t-shirt" width="70" class="showcase-img">
                     </a>
 
                     <div class="showcase-content">
@@ -910,7 +422,7 @@
                   <div class="showcase">
                   
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/clothes-2.jpg" alt="girls pink embro design top" class="showcase-img" width="70">
+                      <img src="../images/products/clothes-2.jpg" alt="girls pink embro design top" class="showcase-img" width="70">
                     </a>
                   
                     <div class="showcase-content">
@@ -933,7 +445,7 @@
                   <div class="showcase">
                   
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/clothes-3.jpg" alt="black floral wrap midi skirt" class="showcase-img"
+                      <img src="../images/products/clothes-3.jpg" alt="black floral wrap midi skirt" class="showcase-img"
                         width="70">
                     </a>
                   
@@ -957,7 +469,7 @@
                   <div class="showcase">
                   
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shirt-1.jpg" alt="pure garment dyed cotton shirt" class="showcase-img"
+                      <img src="../images/products/shirt-1.jpg" alt="pure garment dyed cotton shirt" class="showcase-img"
                         width="70">
                     </a>
                   
@@ -985,7 +497,7 @@
                   <div class="showcase">
                 
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jacket-5.jpg" alt="men yarn fleece full-zip jacket" class="showcase-img"
+                      <img src="../images/products/jacket-5.jpg" alt="men yarn fleece full-zip jacket" class="showcase-img"
                         width="70">
                     </a>
                 
@@ -1009,7 +521,7 @@
                   <div class="showcase">
                 
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jacket-1.jpg" alt="mens winter leathers jackets" class="showcase-img"
+                      <img src="../images/products/jacket-1.jpg" alt="mens winter leathers jackets" class="showcase-img"
                         width="70">
                     </a>
                 
@@ -1033,7 +545,7 @@
                   <div class="showcase">
                 
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jacket-3.jpg" alt="mens winter leathers jackets" class="showcase-img"
+                      <img src="../images/products/jacket-3.jpg" alt="mens winter leathers jackets" class="showcase-img"
                         width="70">
                     </a>
                 
@@ -1057,7 +569,7 @@
                   <div class="showcase">
                 
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shorts-1.jpg" alt="better basics french terry sweatshorts" class="showcase-img"
+                      <img src="../images/products/shorts-1.jpg" alt="better basics french terry sweatshorts" class="showcase-img"
                         width="70">
                     </a>
                 
@@ -1095,7 +607,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/sports-1.jpg" alt="running & trekking shoes - white" class="showcase-img"
+                      <img src="../images/products/sports-1.jpg" alt="running & trekking shoes - white" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1119,7 +631,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/sports-2.jpg" alt="trekking & running shoes - black" class="showcase-img"
+                      <img src="../images/products/sports-2.jpg" alt="trekking & running shoes - black" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1143,7 +655,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/party-wear-1.jpg" alt="womens party wear shoes" class="showcase-img"
+                      <img src="../images/products/party-wear-1.jpg" alt="womens party wear shoes" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1167,7 +679,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/sports-3.jpg" alt="sports claw women's shoes" class="showcase-img"
+                      <img src="../images/products/sports-3.jpg" alt="sports claw women's shoes" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1195,7 +707,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/sports-6.jpg" alt="air tekking shoes - white" class="showcase-img"
+                      <img src="../images/products/sports-6.jpg" alt="air tekking shoes - white" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1219,7 +731,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shoe-3.jpg" alt="Boot With Suede Detail" class="showcase-img" width="70">
+                      <img src="../images/products/shoe-3.jpg" alt="Boot With Suede Detail" class="showcase-img" width="70">
                     </a>
             
                     <div class="showcase-content">
@@ -1242,7 +754,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shoe-1.jpg" alt="men's leather formal wear shoes" class="showcase-img"
+                      <img src="../images/products/shoe-1.jpg" alt="men's leather formal wear shoes" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1266,7 +778,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shoe-2.jpg" alt="casual men's brown shoes" class="showcase-img" width="70">
+                      <img src="../images/products/shoe-2.jpg" alt="casual men's brown shoes" class="showcase-img" width="70">
                     </a>
             
                     <div class="showcase-content">
@@ -1303,7 +815,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/watch-3.jpg" alt="pocket watch leather pouch" class="showcase-img"
+                      <img src="../images/products/watch-3.jpg" alt="pocket watch leather pouch" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1327,7 +839,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jewellery-3.jpg" alt="silver deer heart necklace" class="showcase-img"
+                      <img src="../images/products/jewellery-3.jpg" alt="silver deer heart necklace" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1351,7 +863,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/perfume.jpg" alt="titan 100 ml womens perfume" class="showcase-img"
+                      <img src="../images/products/perfume.jpg" alt="titan 100 ml womens perfume" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1375,7 +887,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/belt.jpg" alt="men's leather reversible belt" class="showcase-img"
+                      <img src="../images/products/belt.jpg" alt="men's leather reversible belt" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1403,7 +915,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jewellery-2.jpg" alt="platinum zircon classic ring" class="showcase-img"
+                      <img src="../images/products/jewellery-2.jpg" alt="platinum zircon classic ring" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1427,7 +939,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/watch-1.jpg" alt="smart watche vital plus" class="showcase-img" width="70">
+                      <img src="../images/products/watch-1.jpg" alt="smart watche vital plus" class="showcase-img" width="70">
                     </a>
             
                     <div class="showcase-content">
@@ -1450,7 +962,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/shampoo.jpg" alt="shampoo conditioner packs" class="showcase-img"
+                      <img src="../images/products/shampoo.jpg" alt="shampoo conditioner packs" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1474,7 +986,7 @@
                   <div class="showcase">
             
                     <a href="#" class="showcase-img-box">
-                      <img src="./images/products/jewellery-1.jpg" alt="rose gold peacock earrings" class="showcase-img"
+                      <img src="../images/products/jewellery-1.jpg" alt="rose gold peacock earrings" class="showcase-img"
                         width="70">
                     </a>
             
@@ -1520,7 +1032,7 @@
                 <div class="showcase">
                   
                   <div class="showcase-banner">
-                    <img src="./images/products/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img">
+                    <img src="../images/products/shampoo.jpg" alt="shampoo, conditioner & facewash packs" class="showcase-img">
                   </div>
 
                   <div class="showcase-content">
@@ -1610,7 +1122,7 @@
                 <div class="showcase">
               
                   <div class="showcase-banner">
-                    <img src="./images/products/jewellery-1.jpg" alt="Rose Gold diamonds Earring" class="showcase-img">
+                    <img src="../images/products/jewellery-1.jpg" alt="Rose Gold diamonds Earring" class="showcase-img">
                   </div>
               
                   <div class="showcase-content">
@@ -1698,13 +1210,15 @@
             <h2 class="title">New Products</h2>
 
             <div class="product-grid">
+              
               <% for (let product of prods) { %>
+                
               <div class="showcase">
-       
+                <a href="/product/<%= product.id %>">
                 <div class="showcase-banner">
 
-                  <img src="./images/products/jacket-3.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
-                  <img src="./images/products/jacket-4.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+                  <img src=".<%= product.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+                  <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
 
                   <p class="showcase-badge">15%</p>
 
@@ -1732,11 +1246,11 @@
 
                 <div class="showcase-content">
 
-                  <a href="#" class="showcase-category"><%= product.title %></a>
+                  <div class="showcase-category"><%= product.title %></div>
 
-                  <a href="#">
-                    <h3 class="showcase-title">Mens Winter Leathers Jackets</h3>
-                  </a>
+                  <div>
+                    <h3 class="showcase-title"><%= product.description %></h3>
+                  </div>
 
                   <div class="showcase-rating">
                     <ion-icon name="star"></ion-icon>
@@ -1747,16 +1261,19 @@
                   </div>
 
                   <div class="price-box">
-                    <p class="price">$48.00</p>
+                    <p class="price">$<%= product.price %>.00</p>
                     <del>$75.00</del>
                   </div>
 
                 </div>
-
+              </a>     
               </div>
-<% } %>
+            
 <% } %>
             
+<% } else { %>
+            <h1>No Product Found</h1>
+            <% } %>
         </div>
       </div>
     </div>
@@ -1790,13 +1307,13 @@
 
             <div class="testimonial-card">
 
-              <img src="./images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
+              <img src="../images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
 
               <p class="testimonial-name">Alan Doe</p>
 
               <p class="testimonial-title">CEO & Founder Invision</p>
 
-              <img src="./images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
+              <img src="../images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
 
               <p class="testimonial-desc">
                 Lorem ipsum dolor sit amet consectetur Lorem ipsum
@@ -1815,7 +1332,7 @@
 
           <div class="cta-container">
 
-            <img src="./images/cta-banner.jpg" alt="summer collection" class="cta-banner">
+            <img src="../images/cta-banner.jpg" alt="summer collection" class="cta-banner">
 
             <a href="#" class="cta-content">
 
@@ -1945,7 +1462,7 @@
           <div class="blog-card">
 
             <a href="#">
-              <img src="./images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300" class="blog-banner">
+              <img src="../images/blog-1.jpg" alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300" class="blog-banner">
             </a>
 
             <div class="blog-content">
@@ -1967,7 +1484,7 @@
           <div class="blog-card">
           
             <a href="#">
-              <img src="./images/blog-2.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+              <img src="../images/blog-2.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
                 class="blog-banner" width="300">
             </a>
           
@@ -1990,7 +1507,7 @@
           <div class="blog-card">
           
             <a href="#">
-              <img src="./images/blog-3.jpg" alt="EBT vendors: Claim Your Share of SNAP Online Revenue."
+              <img src="../images/blog-3.jpg" alt="EBT vendors: Claim Your Share of SNAP Online Revenue."
                 class="blog-banner" width="300">
             </a>
           
@@ -2013,7 +1530,7 @@
           <div class="blog-card">
           
             <a href="#">
-              <img src="./images/blog-4.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
+              <img src="../images/blog-4.jpg" alt="Curbside fashion Trends: How to Win the Pickup Battle."
                 class="blog-banner" width="300">
             </a>
           
@@ -2048,12 +1565,12 @@
   <!--
     - FOOTER
   -->
-<%- include('includes/footer.ejs') %>
+<%- include('../includes/footer.ejs') %>
   <!--
     - custom js link
   -->
-  <script src="js/shop.js"></script>
 
+<script src="js/announcement.js"></script>
   <!--
     - ionicon link
   -->

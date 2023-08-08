@@ -1,0 +1,96 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <div class="overlay" data-overlay></div>
+
+    <%- include('../includes/nav.ejs') %>
+    <div class="product-container">
+
+        <div class="container">
+          <%- include('../includes/sidebar.ejs') %>
+
+          <!--
+            - PRODUCT GRID
+          -->
+          <% if (prods.length > 0){ %>
+          <div class="product-main">
+
+            <h2 class="title">Added Products</h2>
+
+            <div class="product-grid">
+              
+              <% for (let product of prods) { %>
+                
+              <div class="showcase">
+                <div class="showcase-banner">
+
+                  <img src=".<%= product.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+                  <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+
+                  <p class="showcase-badge">15%</p>
+
+                  <div class="showcase-actions">
+
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase-content">
+
+                  <div class="showcase-category"><%= product.title %></div>
+
+                  <div>
+                    <h3 class="showcase-title"><%= product.description %></h3>
+                  </div>
+
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+
+                  <div class="price-box">
+                    <p class="price">$<%= product.price %>.00</p>
+                    <del>$75.00</del>
+                  </div>
+<div class="price-box">
+    <a href="edit-product/<%= product.id %>?edit=true" class="banner-btn">Edit</a>
+    <button class="btn-newsletter">Delete</button>
+</div>
+                </div>
+              
+              </div>
+            
+<% } %>
+            
+<% } else { %>
+            <h1>No Product Found</h1>
+            <% } %>
+        </div>
+      </div>
+    </div>
+        </div>
+
+      </div>
+
+    </div>
+</html>

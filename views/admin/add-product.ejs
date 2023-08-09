@@ -10,6 +10,9 @@
 <label for="price">Price</label>
 <input type="number" name="price" step="0.01" id="price" value="<% if (editing) { %><%= product.price%><% } %>" >
 <label for="description">Description</label>
+<% if(editing) { %>
+     <input type="hidden" value="<%= product.id %>" name="productId">
+<% } %>
 <textarea name="description" id="description" rows="5" > <% if (editing) { %><%= product.description%><% } %> </textarea>
 <button type="submit"><% if (editing) {%>Update Product <%} else{%> Add Product<%}%></button>
 </form>

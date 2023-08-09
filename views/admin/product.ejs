@@ -65,7 +65,7 @@
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star"></ion-icon>
                     <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outli ne"></ion-icon>
                   </div>
 
                   <div class="price-box">
@@ -74,7 +74,11 @@
                   </div>
 <div class="price-box">
     <a href="edit-product/<%= product.id %>?edit=true" class="banner-btn">Edit</a>
-    <button class="btn-newsletter">Delete</button>
+    <form action="delete-product" method="post">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <button class="btn-newsletter">Delete</button>
+    </form>
+  
 </div>
                 </div>
               

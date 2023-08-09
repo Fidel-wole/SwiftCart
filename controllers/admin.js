@@ -20,6 +20,18 @@ exports.addProducts = (req, res, next) => {
   });
 };
 
+//post request for adding  prodcts
+exports.postProduct = (req, res, next) => {
+  const title = req.body.title;
+  const imageUrl = req.body.imageUrl;
+  const price = req.body.price;
+  const description = req.body.description;
+  const product = new Product(null, title, imageUrl, price, description);
+  product.save();
+  console.log(product);
+  res.redirect("/");
+};
+
 //getting added products
 
 exports.getAddedProducts = (req, res, next)=>{
@@ -32,6 +44,8 @@ exports.getAddedProducts = (req, res, next)=>{
            })
     });
 }
+
+//Controller for editig product page
 exports.editProduct = (req, res, next) => {
     const editMode = req.query.edit;
     if(!editMode){
@@ -49,13 +63,20 @@ exports.editProduct = (req, res, next) => {
 
 };
 
-exports.postProduct = (req, res, next) => {
+//post request for editing product
+exports.PostEditProduct = (req, res, next)=>{
+  const prodId = req.body.productId;
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(title, imageUrl, price, description);
+  const product = new Product(prodId, title, imageUrl, price, description);
   product.save();
-  console.log(product);
-  res.redirect("/");
-};
+  res.redirect('products');
+}
+
+exports.deleteProduct = (req, res, next)=>{
+  const prodId = req.body.productId;
+  Product.deleteById(prodId);
+  res.redirect('products')
+}

@@ -69,14 +69,10 @@
               <div>
                 <h3 class="showcase-title"><%= prods.qty %> Quantity</h3>
               </div>
-            <form action="" method="post">
+            <form action="/cart-delete-item" method="post">
               <button class="banner-btn" style="margin-bottom:0.6rem;">Delete</button>
-              <input type="hidden" name="productId" value="<%= prods.id %>" >
+              <input type="hidden" name="productId" value="<%= prods.productData.id %>" >
             </form>
-              
-  
-
-    
     </div>
     </div>
     <%}) %>

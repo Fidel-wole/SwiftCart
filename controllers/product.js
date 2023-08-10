@@ -49,8 +49,16 @@ if(cart.products.find(prod => prod.id === product.id)){
             path:'/cart',
             products: cartProducts
         });
-    })
+    });
  
-})
+});
+}
+exports.postCartDelete = (req, res, next)=>{
+const prodId = req.body.productId;
+console.log(prodId);
+Product.finbyId(prodId, product =>{
+    Cart.deleteProduct(prodId, product.price);
+    res.redirect('/cart');
+});
 
 }

@@ -26,22 +26,30 @@ exports.postProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(null, title, imageUrl, price, description);
-  product.save();
-  console.log(product);
-  res.redirect("/");
+  Product.create({
+    title:title,
+    imageUrl:imageUrl,
+    price:price,
+    description:description,
+  }).then(console.log('Product Added')).catch(err =>{
+    console.log(err);
+  })
 };
 
 //getting added products
 
 exports.getAddedProducts = (req, res, next)=>{
-    Product.fetchAll((products)=>{
-        res.render('admin/product',{
-            prods:products,
-            hasProducts:products.length > 0,
-            pageTitle:'Products',
-            path:'/'
-           })
+  Product.findAll()
+    .then((products) => {
+      res.render("admin/product", {
+        prods: products,
+        path: "/",
+        pageTitle: "Shop",
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+      // Handle the error appropriately, e.g., send an error response to the client
     });
 }
 
@@ -52,14 +60,16 @@ exports.editProduct = (req, res, next) => {
         res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.finbyId(prodId, product =>{
+    Product.findAll({where:{id:prodId}}).then(
+      product =>{
         res.render('admin/add-product',{
-            product: product,
+            product: product[0],
             pageTitle:'Edit Product',
             path:'/edit-product',
             editing:editMode
-        })
-    })
+        })}
+    )
+    
 
 };
 
@@ -70,9 +80,19 @@ exports.PostEditProduct = (req, res, next)=>{
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product = new Product(prodId, title, imageUrl, price, description);
-  product.save();
-  res.redirect('products');
+  Product.findByPk(prodId).then(product =>{
+    product.title = title;
+    product.imageUrl = imageUrl;
+    product.price = price;
+    product.description = description;
+    return product.save();
+  }).then(result =>{
+    console.log(result);
+    res.redirect('products')
+  }).catch(err =>{
+    console.log(err)
+  })
+  
 }
 
 exports.deleteProduct = (req, res, next)=>{

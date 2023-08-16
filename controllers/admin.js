@@ -26,20 +26,17 @@ exports.postProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  Product.create({
-    title:title,
-    imageUrl:imageUrl,
-    price:price,
-    description:description,
-  }).then(console.log('Product Added')).catch(err =>{
+  const product =new Product(title, price, description, imageUrl);
+  product.save()
+  .then(console.log('Product Added')).catch(err =>{
     console.log(err);
   })
 };
 
-//getting added products
+//getting added product
 
 exports.getAddedProducts = (req, res, next)=>{
-  Product.findAll()
+  Product.fetchAll()
     .then((products) => {
       res.render("admin/product", {
         prods: products,
@@ -60,10 +57,10 @@ exports.editProduct = (req, res, next) => {
         res.redirect('/');
     }
     const prodId = req.params.productId;
-    Product.findAll({where:{id:prodId}}).then(
+    Product.findById(prodId).then(
       product =>{
         res.render('admin/add-product',{
-            product: product[0],
+            product: product,
             pageTitle:'Edit Product',
             path:'/edit-product',
             editing:editMode
@@ -80,7 +77,7 @@ exports.PostEditProduct = (req, res, next)=>{
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  Product.findByPk(prodId).then(product =>{
+  Product.findById(prodId).then(product =>{
     product.title = title;
     product.imageUrl = imageUrl;
     product.price = price;
@@ -97,6 +94,10 @@ exports.PostEditProduct = (req, res, next)=>{
 
 exports.deleteProduct = (req, res, next)=>{
   const prodId = req.body.productId;
-  Product.deleteById(prodId);
+  Product.findByPk(prodId).then(product =>{
+    product.destroy();
+  }).then(res.redirect('products')).catch(err =>{
+    console.log(err);
+  })
   res.redirect('products')
 }

@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const adminRoutes = require("./routes/admin");
+ const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const bodyparser = require("body-parser");
-const errorController = require('./controllers/error');
-const sequelize = require('./util/database');
-
+const errorController = require("./controllers/error");
+const mongoConnect = require('./util/database');
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -19,9 +18,7 @@ app.use(shopRoutes);
 
 app.use(errorController.get404error);
 
-sequelize.sync().then(result =>{
-    app.listen(3001);
-}).catch(err =>{
-    console.log(err)
-})
-
+mongoConnect.mongoConnect(() =>{
+   
+    app.listen(3000);
+});

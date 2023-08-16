@@ -73,7 +73,7 @@
                     <del>$75.00</del>
                   </div>
 <div class="price-box">
-    <a href="edit-product/<%= product.id %>?edit=true" class="banner-btn">Edit</a>
+    <a href="edit-product/<%= product._id %>?edit=true" class="banner-btn">Edit</a>
     <form action="delete-product" method="post">
       <input type="hidden" name="productId" value="<%= product.id %>">
       <button class="btn-newsletter">Delete</button>

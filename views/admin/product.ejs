@@ -57,7 +57,7 @@
                   <div class="showcase-category"><%= product.title %></div>
 
                   <div>
-                    <h3 class="showcase-title"><%= product.description %></h3>
+                    <h3 class="showcase-title"><%= product.category %></h3>
                   </div>
 
                   <div class="showcase-rating">
@@ -75,7 +75,7 @@
 <div class="price-box">
     <a href="edit-product/<%= product._id %>?edit=true" class="banner-btn">Edit</a>
     <form action="delete-product" method="post">
-      <input type="hidden" name="productId" value="<%= product.id %>">
+      <input type="hidden" name="productId" value="<%= product._id %>">
       <button class="btn-newsletter">Delete</button>
     </form>
   

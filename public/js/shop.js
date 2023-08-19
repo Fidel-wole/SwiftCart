@@ -47,3 +47,23 @@ for (let i = 0; i < accordionBtn.length; i++) {
     this.classList.toggle("active");
   });
 }
+
+// script.js
+document.addEventListener("DOMContentLoaded", function () {
+  const thumbnails = document.querySelectorAll(".thumbnail");
+  const lightbox = document.querySelector(".lightbox");
+  const enlargedImage = document.querySelector(".enlarged-image");
+
+  thumbnails.forEach(function (thumbnail) {
+    thumbnail.addEventListener("click", function () {
+      const imageSrc = thumbnail.getAttribute("src");
+      enlargedImage.setAttribute("src", imageSrc);
+      lightbox.style.display = "flex";
+    });
+  });
+
+  lightbox.addEventListener("click", function () {
+    lightbox.style.display = "none";
+  });
+});
+

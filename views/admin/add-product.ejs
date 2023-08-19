@@ -13,7 +13,8 @@
 <% if(editing) { %>
      <input type="hidden" value="<%= product._id %>" name="productId">
 <% } %>
-<textarea name="description" id="description" rows="5" > <% if (editing) { %><%= product.description%><% } %> </textarea>
+<textarea name="category" id="description" rows="5" > <% if (editing) { %><%= product.category%><% } %> </textarea>
+<textarea name="description" id="description" rows="15" > <% if (editing) { %><%= product.description%><% } %> </textarea>
 <button type="submit"><% if (editing) {%>Update Product <%} else{%> Add Product<%}%></button>
 </form>
     <%- include('../includes/footer.ejs') %>

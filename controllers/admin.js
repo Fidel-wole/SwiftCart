@@ -1,5 +1,6 @@
 const Product = require("../models/product");
-
+const mongoDb = require('mongodb');
+const ObjectId = mongoDb.ObjectId;
 exports.getProducts = (req, res, next) => {
   // res.sendFile(path.join(__dirname, '../views', 'index.ejs'));
   Product.fetchAll((products) => {
@@ -26,9 +27,11 @@ exports.postProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  const product =new Product(title, price, description, imageUrl);
+  const category =req.body.category;
+  // const userId = req.user._id;
+  const product =new Product({title:title, imageUrl:imageUrl, price:price, description:description, category: category});
   product.save()
-  .then(console.log('Product Added')).catch(err =>{
+  .then(res.redirect('products')).catch(err =>{
     console.log(err);
   })
 };
@@ -36,7 +39,7 @@ exports.postProduct = (req, res, next) => {
 //getting added product
 
 exports.getAddedProducts = (req, res, next)=>{
-  Product.fetchAll()
+  Product.find()
     .then((products) => {
       res.render("admin/product", {
         prods: products,
@@ -77,13 +80,15 @@ exports.PostEditProduct = (req, res, next)=>{
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  Product.findById(prodId).then(product =>{
-    product.title = title;
-    product.imageUrl = imageUrl;
-    product.price = price;
-    product.description = description;
-    return product.save();
-  }).then(result =>{
+
+Product.findById(prodId).then(product =>{
+  product.title = title;
+  product.imageUrl = imageUrl;
+  product.price = price;
+  product.description = description;
+ return product.save()
+})
+  .then(result =>{
     console.log(result);
     res.redirect('products')
   }).catch(err =>{
@@ -94,10 +99,8 @@ exports.PostEditProduct = (req, res, next)=>{
 
 exports.deleteProduct = (req, res, next)=>{
   const prodId = req.body.productId;
-  Product.findByPk(prodId).then(product =>{
-    product.destroy();
-  }).then(res.redirect('products')).catch(err =>{
+  Product.findByIdAndRemove(prodId).then(() =>{res.redirect('products')}).catch(err =>{
     console.log(err);
   })
-  res.redirect('products')
+
 }

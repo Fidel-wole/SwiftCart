@@ -1,0 +1,70 @@
+@import url(./index.css);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+}
+
+.container{
+    background-color: inherit;
+    margin-top: 5rem;
+    box-shadow: 0px 0px 10px #0002;
+    padding: 4rem;
+}
+.container img{
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    width: 50%;
+}
+.head{
+    margin-bottom: 2rem;
+    color: var(--salmon-pink);
+}
+.input{
+    margin-top: 0.9rem;
+}
+.form_content label{
+    color: var(--salmon-pink);
+}
+
+.form_content input{
+    border-left: none;
+    border-top: none;
+    border-right: none;
+        
+}
+.form_content input:focus{
+border: none;
+}
+
+.btn{
+    width: 100%;
+    background-color: var(--salmon-pink);
+    color: var(--white);
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 30PX 30PX 30PX  30PX;
+}
+.btn:hover{
+    transition: 0.8s;
+    transform: scale(1.1);
+    background-color:var(--eerie-black) ;
+}
+
+.btn2{
+    background-color: var(--eerie-black);
+}
+
+.btn2:hover{
+    background-color: var(--salmon-pink);
+}

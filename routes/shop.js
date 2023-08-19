@@ -5,7 +5,7 @@ const router = express.Router();
 const productController = require('../controllers/product');
 
 //landing page route
-router.get('/', productController.getProducts);
+router.get('/shop', productController.getProducts);
 
 //product details route
 router.get('/product/:productId', productController.getProduct);

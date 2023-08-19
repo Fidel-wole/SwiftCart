@@ -1,4 +1,5 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="../css/details.css">
 </head>
 
 <body>
@@ -13,7 +14,7 @@
 
         <h2 class="title">Product details</h2>
 
-        <div class="product-grid">
+        <div class="product-flex product-grid">
         
             
           <div class="showcase">
@@ -51,7 +52,7 @@
               <div class="showcase-category"><%= prods.title %></div>
 
               <div>
-                <h3 class="showcase-title"><%= prods.description %></h3>
+                <h3 class="showcase-title"><%= prods.category %></h3>
               </div>
 
               <div class="showcase-rating">
@@ -68,22 +69,34 @@
               </div>
             <form action="/cart" method="post">
               <button class="banner-btn" style="margin-bottom:0.6rem;">Add To Cart </button>
-              <input type="hidden" name="productId" value="<%= prods.id %>" >
+              <input type="hidden" name="productId" value="<%= prods._id %>" >
             </form>
               
             </div>
           </div>          
-            <div class="showcase">
-            
-  
-         description
-            
-            
+            <div class="showcaseDetails">
+            <div class="productImages">
+              <div class="image">
+                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
+              </div>
+              <div class="image">
+                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
+              </div>
+              <div class="image">
+                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
+              </div>
+            </div>
+            <div class="lightbox">
+              <img src="" alt="Enlarged Image" class="enlarged-image">
+            </div>
+            <div class="productText">
+              <p><%=prods.description %></p>
+            </div>
           </div>
           
         </div>
 
-    </div>
+    
     
     </div>
     </div>

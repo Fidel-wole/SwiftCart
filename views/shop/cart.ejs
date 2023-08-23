@@ -19,7 +19,7 @@
           <div class="showcase">
             <div class="showcase-banner">
 
-              <img src="..<%= prods.productData.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+              <img src="..<%= prods.productId.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
               <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
 
               <p class="showcase-badge">15%</p>
@@ -48,10 +48,10 @@
 
             <div class="showcase-content">
 
-              <div class="showcase-category"><%= prods.productData.title %></div>
+              <div class="showcase-category"><%= prods.productId.title %></div>
 
               <div>
-                <h3 class="showcase-title"><%= prods.productData.description %></h3>
+                <h3 class="showcase-title"><%= prods.productId.description %></h3>
               </div>
 
               <div class="showcase-rating">
@@ -63,15 +63,15 @@
               </div>
 
               <div class="price-box">
-                <p class="price">$<%= prods.productData.price %>.00</p>
+                <p class="price">$<%= prods.productId.price %>.00</p>
                 <del>$75.00</del>
               </div>
               <div>
-                <h3 class="showcase-title"><%= prods.qty %> Quantity</h3>
+                <h3 class="showcase-title"><%= prods.quantity %> Quantity</h3>
               </div>
             <form action="/cart-delete-item" method="post">
               <button class="banner-btn" style="margin-bottom:0.6rem;">Delete</button>
-              <input type="hidden" name="productId" value="<%= prods.productData.id %>" >
+              <input type="hidden" name="productId" value="<%= prods.productId._id %>" >
             </form>
     </div>
     </div>

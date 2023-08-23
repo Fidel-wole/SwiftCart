@@ -29,7 +29,7 @@ exports.postProduct = (req, res, next) => {
   const description = req.body.description;
   const category =req.body.category;
   // const userId = req.user._id;
-  const product =new Product({title:title, imageUrl:imageUrl, price:price, description:description, category: category});
+  const product =new Product({title:title, imageUrl:imageUrl, price:price, description:description, category: category, userId: req.user._id});
   product.save()
   .then(res.redirect('products')).catch(err =>{
     console.log(err);
@@ -40,12 +40,14 @@ exports.postProduct = (req, res, next) => {
 
 exports.getAddedProducts = (req, res, next)=>{
   Product.find()
+  .populate('userId')
     .then((products) => {
       res.render("admin/product", {
         prods: products,
         path: "/",
         pageTitle: "Shop",
       });
+      console.log(products);
     })
     .catch((error) => {
       console.error("Error fetching products:", error);
@@ -86,6 +88,7 @@ Product.findById(prodId).then(product =>{
   product.imageUrl = imageUrl;
   product.price = price;
   product.description = description;
+  
  return product.save()
 })
   .then(result =>{

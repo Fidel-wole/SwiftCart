@@ -13,6 +13,6 @@ exports.Postsignup = (req, res, next)=>{
  const phone_number = req.body.phone_number;
  const password = req.body.password;
 
- const user = new User(firstname, middlename, lastname, email, phone_number, password);
+ const user = new User({firstname:firstname, middlename:middlename, lastname:lastname, email:email, phone_number:phone_number, password:password});
  user.save().then(res.redirect('/shop'))
 }

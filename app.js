@@ -16,26 +16,22 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(bodyparser.urlencoded({ extended: false }));
-app.use(adminRoutes);
-app.use(shopRoutes);
-app.use(authRoute);
-
 app.use((req, res, next)=>{
-    const userId = '64dfb65cec09f4225f193043';
+    const userId = '64e55d06b0030fbb638e88c6';
     User.findById(userId).then(user =>{
-        if (user) {
-            req.user = new User(user.firstname, user.middlename, user.lastname, user.email, user.phone_number, user.password, user.cart, user._id)
-            console.log(userId);
+        req.user=user;
             
-        } else {
-            console.log('User not found');
-            next(); // Proceed to the next middleware
-        }
-         
+            console.log(user);
+            next(); 
     }).catch(err =>{
         console.log(err);
     });
 });
+app.use(adminRoutes);
+app.use(shopRoutes);
+app.use(authRoute);
+
+
 
 app.use(errorController.get404error);
 
@@ -46,7 +42,7 @@ mongoose.connect('mongodb+srv://Fidel_Wole:2ql24UoUi4uN5302@cluster0.cwzz5uc.mon
         middlename:"Fidelis",
         lastname:"Adewoye",
         email:"adewoyeadedayo10@gmail.com",
-        phone_numer:"0705758871",
+        phone_number:"0705758871",
         password:"fidelis",
         cart:{
             items:[]
@@ -55,7 +51,7 @@ mongoose.connect('mongodb+srv://Fidel_Wole:2ql24UoUi4uN5302@cluster0.cwzz5uc.mon
        user.save();
 }});
 
-app.listen(3000);
+app.listen(8000);
 }).catch(err =>{
     console.log(err);
 });

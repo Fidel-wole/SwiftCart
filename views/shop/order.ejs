@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+
+   
+    <% if(orders.length > 0) { %>
+        <% orders.forEach(prods => { %>
+<h1><%= prods._id %></h1>
+
+<%}) %>
+<%}else { %> 
+<h1>No Products</h1>
+<% } %>
+
+    <%- include('../includes/footer.ejs') %>
+</body>

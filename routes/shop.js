@@ -20,3 +20,4 @@ module.exports = router;
 //order route
 
 router.post('/order', productController.postOrder);
+router.get('/orders', productController.getOrder);

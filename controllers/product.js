@@ -1,7 +1,9 @@
+// product model
 const Product = require("../models/product");
+//order model
 const Order = require("../models/order");
-const product = require("../models/product");
 
+//getting of products controller
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then((products) => {
@@ -17,6 +19,7 @@ exports.getProducts = (req, res, next) => {
     });
 };
 
+//getting a single product controller 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   Product.findById(prodId)
@@ -31,6 +34,8 @@ exports.getProduct = (req, res, next) => {
       console.log(err);
     });
 };
+
+//adding selected product to cart controller
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findById(prodId).then(product =>{
@@ -43,6 +48,8 @@ exports.postCart = (req, res, next) => {
     console.log(err);
   })
 };
+
+//getting the cart controller
 exports.getcart = (req, res, next) => {
       req.user.populate('cart.items.productId')
       
@@ -57,9 +64,9 @@ exports.getcart = (req, res, next) => {
       })
       }
       
-
+//deleting cart product controller
 exports.postCartDelete = (req, res, next) => {
-  const prodId = req.body.productId; 
+  const productId = req.body.productId; 
   req.user.removeCartItem(productId).then(result =>{
     res.redirect('/cart')
   }).catch(err => {
@@ -68,11 +75,11 @@ exports.postCartDelete = (req, res, next) => {
     
 };
 
-//order controller
 
+//order controller
 exports.postOrder = (req, res, next) =>{
   req.user.populate('cart.items.productId')
-      
+   .execPopulate()   
   .then(user =>{
     const products = user.cart.items.map(i =>{
       return {quantity:i.quantity, product:i.productId};
@@ -92,4 +99,17 @@ exports.postOrder = (req, res, next) =>{
     console.log(err);
   })
 
+};
+
+//getting order page controller
+exports.getOrder = (req, res, next)=>{
+  const userId = req.user;
+  Order.findById(userId).then(orders => {
+    res.render('shop/order', {
+      pageTitle:'Orders',
+      path:'/orders',
+      orders: orders
+    })
+  })
+  
 }

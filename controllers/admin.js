@@ -1,6 +1,7 @@
 const Product = require("../models/product");
 const mongoDb = require('mongodb');
 const ObjectId = mongoDb.ObjectId;
+const removeProductFromUsersCart = require('../middlewares/product')
 exports.getProducts = (req, res, next) => {
   // res.sendFile(path.join(__dirname, '../views', 'index.ejs'));
   Product.fetchAll((products) => {
@@ -100,10 +101,22 @@ Product.findById(prodId).then(product =>{
   
 }
 
-exports.deleteProduct = (req, res, next)=>{
-  const prodId = req.body.productId;
-  Product.findByIdAndRemove(prodId).then(() =>{res.redirect('products')}).catch(err =>{
-    console.log(err);
-  })
+// Delete a product and trigger cart cleanup
+exports.deleteProduct = (req, res) => {
+  const productId = req.body.productId; // Assuming the product ID is in the request body
 
+  Product.findByIdAndRemove(productId)
+    .then((deletedProduct) => {
+      if (deletedProduct) {
+        return removeProductFromUsersCart(productId);
+      }
+    })
+    .then(() => {
+      res.redirect('/products'); // Redirect after all promises are resolved
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: 'Error deleting product.' });
+    });
 }
+

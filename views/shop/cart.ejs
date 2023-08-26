@@ -17,6 +17,7 @@
           <% if(products.length > 0) { %>
             <% products.forEach(prods => { %>
           <div class="showcase">
+            <a href="/product/<%= prods.productId._id %>">
             <div class="showcase-banner">
 
               <img src="..<%= prods.productId.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
@@ -69,19 +70,27 @@
               <div>
                 <h3 class="showcase-title"><%= prods.quantity %> Quantity</h3>
               </div>
+            </a>
             <form action="/cart-delete-item" method="post">
               <button class="banner-btn" style="margin-bottom:0.6rem;">Delete</button>
               <input type="hidden" name="productId" value="<%= prods.productId._id %>" >
             </form>
     </div>
+
     </div>
+    
     <%}) %>
     <%}else { %> 
     <h1>No Products</h1>
     <% } %>
     </div>
+    <form method="post" action="/order" class="order">
+      <button type="submit" class="banner-btn" style="width: 100%; margin-top: 1rem;">Place Order</button>
+    </form>
+    
     </div>
       </div>
+      
     <%- include('../includes/footer.ejs') %>
 </body>
 </html>

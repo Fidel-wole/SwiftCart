@@ -1,6 +1,6 @@
 const Product = require("../models/product");
-const Cart = require("../models/cart");
-const user = require("../models/user");
+const Order = require("../models/order");
+const product = require("../models/product");
 
 exports.getProducts = (req, res, next) => {
   Product.find()
@@ -59,10 +59,37 @@ exports.getcart = (req, res, next) => {
       
 
 exports.postCartDelete = (req, res, next) => {
-  const prodId = req.body.productId;
-  console.log(prodId);
-  Product.finbyId(prodId, (product) => {
-    Cart.deleteProduct(prodId, product.price);
-    res.redirect("/cart");
-  });
+  const prodId = req.body.productId; 
+  req.user.removeCartItem(productId).then(result =>{
+    res.redirect('/cart')
+  }).catch(err => {
+  console.log(err);
+  })
+    
 };
+
+//order controller
+
+exports.postOrder = (req, res, next) =>{
+  req.user.populate('cart.items.productId')
+      
+  .then(user =>{
+    const products = user.cart.items.map(i =>{
+      return {quantity:i.quantity, product:i.productId};
+    });
+    const order = new Order({
+      user:{
+        name: req.user.lastname,
+        userId: req.user
+      },
+      products: products
+    });
+   return order.save();
+  })
+ .then(result =>{
+    res.redirect('/orders');
+  }).catch(err =>{
+    console.log(err);
+  })
+
+}

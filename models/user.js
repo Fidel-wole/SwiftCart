@@ -68,4 +68,12 @@ updatedCartItems[cartProductIndex].quantity = newQuantity;
     this.cart = updatedCart;
     return this.save();
 }
+
+userSchema.methods.removeCartItem = function (productId){
+    const updatedCartItem = this.cart.items.filter(item =>{
+        return item.productId.toString() != productId.toString() 
+    });
+    this.cart.items = updatedCartItem;
+    return this.save(); 
+}
 module.exports = mongoose.model('User', userSchema);

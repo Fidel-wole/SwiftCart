@@ -1,0 +1,11 @@
+.add-product{
+    margin-left: 20%;
+    width: 60%;
+}
+.add-product textarea, .banner-btn{
+    width: 100%;
+    resize: none;
+}
+.add-product .banner-btn{
+    margin-bottom: 1rem;
+}

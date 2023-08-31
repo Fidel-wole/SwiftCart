@@ -16,3 +16,15 @@ exports.Postsignup = (req, res, next)=>{
  const user = new User({firstname:firstname, middlename:middlename, lastname:lastname, email:email, phone_number:phone_number, password:password});
  user.save().then(res.redirect('/shop'))
 }
+
+exports.login = (req, res, next) =>{
+    console.log(req.get('Cookie').split(';')[1].trim().split('=')[1] === 'true');
+    res.render('authentication/login', {
+        pageTitle: 'Log in',
+    })
+}
+
+exports.postLogin = (req, res, next)=>{
+    res.setHeader('Set-Cookie', 'loggedIn=true; Secure');
+    res.redirect('/shop')
+}

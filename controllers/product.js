@@ -79,10 +79,10 @@ exports.postCartDelete = (req, res, next) => {
 //order controller
 exports.postOrder = (req, res, next) =>{
   req.user.populate('cart.items.productId')
-   .execPopulate()   
+    
   .then(user =>{
     const products = user.cart.items.map(i =>{
-      return {quantity:i.quantity, product:i.productId};
+      return {quantity:i.quantity, product: {...i.productId._doc}};
     });
     const order = new Order({
       user:{
@@ -94,7 +94,10 @@ exports.postOrder = (req, res, next) =>{
    return order.save();
   })
  .then(result =>{
-    res.redirect('/orders');
+  return req.user.clearCart();
+
+  }).then(()=>{
+    res.redirect('orders')
   }).catch(err =>{
     console.log(err);
   })
@@ -104,7 +107,7 @@ exports.postOrder = (req, res, next) =>{
 //getting order page controller
 exports.getOrder = (req, res, next)=>{
   const userId = req.user;
-  Order.findById(userId).then(orders => {
+  Order.find({'user.userId': userId}).then(orders => {
     res.render('shop/order', {
       pageTitle:'Orders',
       path:'/orders',

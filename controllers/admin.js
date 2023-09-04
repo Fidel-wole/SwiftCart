@@ -112,7 +112,7 @@ exports.deleteProduct = (req, res) => {
       }
     })
     .then(() => {
-      res.redirect('/products'); // Redirect after all promises are resolved
+      res.redirect('products'); // Redirect after all promises are resolved
     })
     .catch(err => {
       console.log(err);

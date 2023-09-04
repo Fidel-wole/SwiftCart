@@ -4,7 +4,7 @@
 
 <body>
 
-
+<% if(isAuthenticated) { %>
   <div class="overlay" data-overlay></div>
 
   <!--
@@ -1575,7 +1575,7 @@
   <!--
     - ionicon link
   -->
-
+<% }else{ %> <p>Please Log in</p> <% } %>
 </body>
 
 </html>

@@ -11,6 +11,7 @@ exports.getProducts = (req, res, next) => {
         prods: products,
         path: "/",
         pageTitle: "Shop",
+        isAuthenticated: req.session.isAuthenticated || false,
       });
     })
     .catch((error) => {
@@ -115,4 +116,12 @@ exports.getOrder = (req, res, next)=>{
     })
   })
   
+}
+
+exports.logout = (req, res, nect) =>{
+  req.session.destroy(err =>{
+    console.log(err);
+    res.redirect('/')
+  })
+   
 }

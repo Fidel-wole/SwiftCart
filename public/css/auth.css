@@ -13,6 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: var(--white);
+  
 }
 
 .container{
@@ -32,6 +33,7 @@ body{
 }
 .input{
     margin-top: 0.9rem;
+    color: var(--salmon-pink);
 }
 .form_content label{
     color: var(--salmon-pink);
@@ -67,4 +69,10 @@ border: none;
 
 .btn2:hover{
     background-color: var(--salmon-pink);
+}
+
+@media  (max-width: 750px) {
+    body{
+        padding: 1rem;
+    }
 }

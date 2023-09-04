@@ -1,7 +1,11 @@
 <%- include('includes/head.ejs') %>
 </head>
 <body>
+    <%if (isAuthenticated) {%>
     <%- include('includes/nav.ejs') %>
     <h2 style="text-align: center; margin-top: 5rem;">Page not found</h2>
+    <%}else {%>
+        <h2 style="text-align: center; margin-top: 5rem;">Page not found</h2>
+        <% } %>
 </body>
 </html>

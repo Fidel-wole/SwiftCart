@@ -21,3 +21,7 @@ module.exports = router;
 
 router.post('/order', productController.postOrder);
 router.get('/orders', productController.getOrder);
+
+//logout
+
+router.post('/logout', productController.logout);

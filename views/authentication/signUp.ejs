@@ -34,17 +34,49 @@
           <div class="input">
             <label>Phone number</label>
             <input type="number" name="phone_number" />
+          
           </div>
           <div class="input">
             <label>Password</label>
-            <input type="text" name="password" />
+            <input type="password" name="password" />
+           
           </div>
-          <button class="btn">Sign Up</button>
+          <div class="input">
+            <label>Confirm Password</label>
+            <input type="password" name="passwordConfirm" />
+            <div id="erro1"></div>
+          </div>
+          <button class="btn" id="btn">Sign Up</button>
           <a href="/">
           <button class="btn btn2" type="button">Log In</button>
           </a>
         </div>
       </form>
     </div>
+    
+    <script>
+      const button = document.getElementById('btn');
+    
+      function submitForm() {
+        button.addEventListener('click', (event) => {
+          const password = document.getElementsByName('password')[0].value;
+          const passwordConfirm = document.getElementsByName('passwordConfirm')[0].value;
+          const erro1 = document.getElementById('erro1');
+          const erro2 = document.getElementById('erro2');
+          if (password.length < 8) {
+            erro1.innerHTML = "Password length must be 8 and above";
+            event.preventDefault(); 
+          } else if (passwordConfirm !== password) {
+            erro1.innerHTML = "Password don't match";
+            event.preventDefault(); // Prevent form submission
+          }
+        });
+      }
+    
+      submitForm();
+    </script>
+    
+    
+    
   </body>
 </html>

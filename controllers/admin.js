@@ -15,10 +15,12 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.addProducts = (req, res, next) => {
+
   res.render("admin/add-product", {
     pageTitle: "add-product",
     path: "/add-product",
     editing:false,
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 

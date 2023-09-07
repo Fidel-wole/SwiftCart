@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/auth.css"
   </head>
   <body>
+
     <div class="container">
         <img src="./images/logo/logo.svg">
       <form action="login" method="post">
@@ -14,7 +15,16 @@
           <h3>Welcome to Anon Mart</h3>
           <p>Log in to continue</p>
         </div>
+<!-- Add this code in your user view (e.g., login.ejs) -->
+<% if (typeof messages !== 'undefined' && messages.error) { %>
+  <div class="error-message">
+    <%= messages.error %>
+  </div>
+<% } %>
+
+
         <div class="form_content">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
           <div class="input">
             <label>Email</label>
             <input type="email" name="email"/>

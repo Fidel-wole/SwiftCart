@@ -28,7 +28,8 @@ exports.getProduct = (req, res, next) => {
       res.render("shop/productDetail", {
         prods: product,
         path: "/",
-        pageTitle: product.title    
+        pageTitle: product.title,
+        csrfToken:req.csrfToken(),    
         });
     })
     .catch((err) => {

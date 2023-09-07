@@ -97,6 +97,7 @@ Product.findById(prodId).then(product =>{
   .then(result =>{
     console.log(result);
     res.redirect('products')
+
   }).catch(err =>{
     console.log(err)
   })

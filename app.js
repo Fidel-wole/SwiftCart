@@ -4,13 +4,14 @@ const session = require("express-session");
 const MONGODB_URI =
   "mongodb+srv://Fidel_Wole:2ql24UoUi4uN5302@cluster0.cwzz5uc.mongodb.net/shop";
 const path = require("path");
+const flash = require("connect-flash");
 const mongoDbStore = require("connect-mongodb-session")(session);
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const authRoute = require("./routes/auth");
 const bodyparser = require("body-parser");
 const errorController = require("./controllers/error");
-
+const csrf = require('csurf');
 const User = require("./models/user");
 
 const mongoose = require("mongoose");
@@ -19,7 +20,7 @@ const store = new mongoDbStore({
   uri: MONGODB_URI,
   collection: "sessions",
 });
-
+const csrfProtection = csrf()
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -29,6 +30,8 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(
   session({ secret: "my secret", resave: false, saveUninitialized: false, store:store })
 );
+
+app.use(csrfProtection);
 
 app.use((req,res, next)=>{
     if(!req.session.user){
@@ -41,6 +44,13 @@ User.findById(req.session.user._id)
 }).catch(err =>{
     console.log(err);
 })
+})
+app.use(flash());
+app.use((req, res, next)=>{
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+  res.locals.csrfToken = req.csrfToken();
+next();
+
 })
 
 // app.use((req, res, next) => {

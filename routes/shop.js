@@ -15,7 +15,6 @@ router.post('/cart', productController.postCart);
 router.get('/cart', productController.getcart);
 //delete cart
 router.post('/cart-delete-item', productController.postCartDelete);
-module.exports = router;
 
 //order route
 
@@ -25,3 +24,5 @@ router.get('/orders', productController.getOrder);
 //logout
 
 router.post('/logout', productController.logout);
+
+module.exports = router;

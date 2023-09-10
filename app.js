@@ -16,23 +16,29 @@ const User = require("./models/user");
 
 const mongoose = require("mongoose");
 
+//store session in database
 const store = new mongoDbStore({
   uri: MONGODB_URI,
   collection: "sessions",
 });
-const csrfProtection = csrf()
+
+const csrfProtection = csrf();
+
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 //middlewares
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyparser.urlencoded({ extended: false }));
+
+//session
 app.use(
   session({ secret: "my secret", resave: false, saveUninitialized: false, store:store })
 );
 
 app.use(csrfProtection);
 
+//in charge of logged users details
 app.use((req,res, next)=>{
     if(!req.session.user){
        return  next();
@@ -45,7 +51,11 @@ User.findById(req.session.user._id)
     console.log(err);
 })
 })
+
+//errorMdessages
 app.use(flash());
+
+//csrf
 app.use((req, res, next)=>{
   res.locals.isAuthenticated = req.session.isLoggedIn;
   res.locals.csrfToken = req.csrfToken();
@@ -53,19 +63,6 @@ next();
 
 })
 
-// app.use((req, res, next) => {
-//   const userId = "64f1b3f7c76b1718318a2555";
-//   User.findById(userId)
-//     .then((user) => {
-//       req.user = user;
-
-//       console.log(user);
-//       next();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoute);
@@ -74,24 +71,7 @@ app.use(errorController.get404error);
 
 mongoose
   .connect(MONGODB_URI)
-  .then((result) => {
-    User.findOne().then((user) => {
-      if (!user) {
-        const user = new User({
-          firstname: "Adewole",
-          middlename: "Fidelis",
-          lastname: "Adewoye",
-          email: "adewoyeadedayo10@gmail.com",
-          phone_number: "0705758871",
-          password: "fidelis",
-          cart: {
-            items: [],
-          },
-        });
-        user.save();
-      }
-    });
-
+  .then(() => {
     app.listen(8000);
   })
   .catch((err) => {

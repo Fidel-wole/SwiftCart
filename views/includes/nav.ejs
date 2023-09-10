@@ -59,6 +59,7 @@
 
           
             <form method="post" action="/logout">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button style="background-color: var(--salmon-pink); padding: 0.2rem; color:white; font-size: 14px; border-radius: 0.4rem;">Log Out</button>
             </form>
           
@@ -607,6 +608,7 @@
             </ul>
           </li>
           <form method="post" action="/logout">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button style="background-color: var(--salmon-pink); padding: 0.2rem; color:white; font-size: 14px; border-radius: 0.4rem; width: 100%; margin-top:0.5rem;">Log Out</button>
           </form>
         </ul>

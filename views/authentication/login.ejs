@@ -16,9 +16,9 @@
           <p>Log in to continue</p>
         </div>
 <!-- Add this code in your user view (e.g., login.ejs) -->
-<% if (typeof messages !== 'undefined' && messages.error) { %>
+<% if (errorMessage) { %>
   <div class="error-message">
-    <%= messages.error %>
+    <%= errorMessage%>
   </div>
 <% } %>
 
@@ -35,10 +35,18 @@
           </div>
           <button class="btn">Log in</button>
           <a href="/signup">
-          <button class="btn btn2" type="button">Sign Up</button>
+          <button class="btn btn2" type="button" id="submit">Sign Up</button>
           </a>
         </div>
       </form>
     </div>
+    <script>
+const submit = document.getElementById('submit');
+
+submit.addEventListener('submit', ()=>{
+  const email = document.getElementsByName('email').value;
+  const password = document.getElementByName('password').value;
+})
+    </script>
   </body>
 </html>

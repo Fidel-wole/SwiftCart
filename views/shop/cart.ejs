@@ -72,6 +72,7 @@
               </div>
             </a>
             <form action="/cart-delete-item" method="post">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button class="banner-btn" style="margin-bottom:0.6rem;">Delete</button>
               <input type="hidden" name="productId" value="<%= prods.productId._id %>" >
             </form>

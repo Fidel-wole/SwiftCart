@@ -76,3 +76,10 @@ border: none;
         padding: 1rem;
     }
 }
+
+.error-message{
+    background-color: var(--salmon-pink);
+    color: white;
+    padding: 0.5rem;
+    text-align: start;
+}

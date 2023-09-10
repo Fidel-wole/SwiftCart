@@ -39,6 +39,7 @@ exports.login = (req, res, next) => {
   res.render("authentication/login", {
     pageTitle: "Log in",
     isAuthenticated: true,
+    errorMessage: req.flash('error')
   });
 };
 

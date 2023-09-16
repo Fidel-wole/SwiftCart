@@ -1,9 +1,29 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.mailosaur.net',
+  port: 587,
+  secure: false, 
+  auth: {
+    user: 'y1dtpak9@mailosaur.net',
+    pass: 'GqFCpX5wrWFlIhE6MpZYz2RcHFvpmZc5', 
+  },
+});
+
+
 exports.authPage = (req, res, next) => {
+  let message = req.flash('error');
+  if(message.length > 0){
+    message = message[0];
+  }else{
+    message=null
+  }
   res.render("authentication/signUp", {
     pageTitle: "Sign Up",
     isAuthenticated:true,
+    errorMessage:message
   });
 };
 exports.Postsignup = (req, res, next) => {
@@ -16,7 +36,16 @@ exports.Postsignup = (req, res, next) => {
   User.findOne({ email: email })
     .then((exist) => {
       if (exist) {
-        res.redirect("/signup");
+        //if Useer exist
+    
+        transporter.sendMail({
+          to:email,
+          from: "anon@shop.com",
+          subject: 'Signup sattempt made',
+          html: '<h1>Welcome to Anon Mart we are glad to have you on board</h2>'
+        })   
+        req.flash('error', 'User with email or phone number already exist');
+        res.status(401).redirect('/signup');   
       }
       return bcrypt.hash(password, 12);
     })
@@ -30,16 +59,32 @@ exports.Postsignup = (req, res, next) => {
         password: hashpassword,
         cart:{items:[]}
       });
-      user.save().then(res.redirect("/"));
+      user.save().then(result =>{
+        res.redirect("/")
+        transporter.sendMail({
+          to:email,
+          from: "box-increase@y1dtpak9.mailosaur.net",
+          subject: 'Signup succeeded',
+          html: '<h1>Welcome to Anon Mart we are glad to have you on board</h2>'
+        })
+       }).catch(err =>{
+        console.log(err);
+       });
     });
 };
 
 exports.login = (req, res, next) => {
   console.log(req.session.isLoggedIn);
+  let message = req.flash('error');
+  if(message.length > 0){
+    message = message[0];
+  }else{
+    message=null
+  }
   res.render("authentication/login", {
     pageTitle: "Log in",
     isAuthenticated: true,
-    errorMessage: req.flash('error')
+    errorMessage: message
   });
 };
 
@@ -80,3 +125,27 @@ exports.postLogin = (req, res, next) => {
     });
 };
 
+exports.getResetPassword = (req, res, next)=>{
+  let message = req.flash('error');
+  if(message.length > 0){
+    message = message[0];
+  }else{
+    message=null
+  }
+
+  res.render('authentication/resetPassword', {
+    pageTitle: 'reset password',
+    path:'/reset',
+    errorMessage: message
+  })
+}
+
+exports.postResetPassword = (req, res, next)=>{
+  User.findOne({email: req.body.email}).then(result =>{
+    console.log(email);
+  }).catch(err =>{
+    console.log(err)
+  })
+}
+
+//

@@ -14,6 +14,11 @@
           <h3>Welcome to Anon Mart</h3>
           <p>Sign up to continue</p>
         </div>
+        <% if (errorMessage) { %>
+          <div class="error-message">
+            <%= errorMessage%>
+          </div>
+        <% } %>
         <div class="form_content">
           <div class="input">
             <label>Firstname</label>

@@ -23,6 +23,12 @@ exports.getProducts = (req, res, next) => {
 //getting a single product controller 
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
+  let sucessMessage = req.flash('sucess');
+  if(sucessMessage.length > 0){
+    sucessMessage = sucessMessage[0]
+  }else{
+    sucessMessage = null;
+  }
   Product.findById(prodId)
     .then((product) => {
       res.render("shop/productDetail", {
@@ -30,6 +36,7 @@ exports.getProduct = (req, res, next) => {
         path: "/",
         pageTitle: product.title,
         csrfToken:req.csrfToken(),    
+        sucessMessage: sucessMessage
         });
     })
     .catch((err) => {
@@ -44,7 +51,8 @@ exports.postCart = (req, res, next) => {
     return req.user.addToCart(product)})
     .then(result =>{
       console.log(result);
-      res.redirect('/shop');
+      req.flash('sucess', 'Product Added To Cart');
+      res.redirect(`/product/${prodId}`);
     })
   .catch(err =>{
     console.log(err);

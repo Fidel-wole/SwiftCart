@@ -4,22 +4,23 @@ const router = express.Router();
 
 const productController = require('../controllers/product');
 
+const auth = require('../middlewares/auth')
 //landing page route
-router.get('/shop', productController.getProducts);
+router.get('/shop', auth, productController.getProducts);
 
 //product details route
-router.get('/product/:productId', productController.getProduct);
+router.get('/product/:productId', auth, productController.getProduct);
 
 //cart routes
 router.post('/cart', productController.postCart);
-router.get('/cart', productController.getcart);
+router.get('/cart', auth, productController.getcart);
 //delete cart
 router.post('/cart-delete-item', productController.postCartDelete);
 
 //order route
 
 router.post('/order', productController.postOrder);
-router.get('/orders', productController.getOrder);
+router.get('/orders', auth, productController.getOrder);
 
 //logout
 

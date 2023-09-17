@@ -7,7 +7,14 @@
 
     <%- include('../includes/nav.ejs') %>
     <div class="product-container">
-
+      <% if (sucessMessage) { %>
+        <div class="error-message" style="  background-color: var(--salmon-pink);
+        color: white;
+        padding: 0.5rem;
+        text-align: center">
+          <%= sucessMessage%>
+        </div>
+      <% } %>
       <div class="container">
         <%- include('../includes/sidebar.ejs') %>
     <div class="product-main">

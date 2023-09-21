@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const multer = require('multer')
 const session = require("express-session");
 const MONGODB_URI =
   "mongodb+srv://Fidel_Wole:2ql24UoUi4uN5302@cluster0.cwzz5uc.mongodb.net/shop";
@@ -27,10 +28,25 @@ const csrfProtection = csrf();
 app.set("view engine", "ejs");
 app.set("views", "views");
 
+//file upload middleware
+
+// Define the directory path
+
+
+const filestorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    cb(null,  file.fieldname + '-' + file.originalname);
+  },
+})
+
 //middlewares
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/images', express.static(path.join(__dirname, "images")));
 app.use(bodyparser.urlencoded({ extended: false }));
-
+app.use(multer({ storage:filestorage }).array('image', 4));
 //session
 app.use(
   session({ secret: "my secret", resave: false, saveUninitialized: false, store:store })
@@ -62,6 +78,7 @@ app.use((req, res, next)=>{
 next();
 
 })
+
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);

@@ -15,26 +15,31 @@ exports.getProducts = (req, res, next) => {
 };
 
 exports.addProducts = (req, res, next) => {
-
+  const csrfToken = req.csrfToken();
   res.render("admin/add-product", {
     pageTitle: "add-product",
     path: "/add-product",
     editing:false,
     isAuthenticated: req.session.isLoggedIn,
+    csrfToken:csrfToken,
   });
 };
 
 //post request for adding  prodcts
 exports.postProduct = (req, res, next) => {
   const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
+  const image = req.files.map(file => file.path);;
   const price = req.body.price;
   const description = req.body.description;
   const category =req.body.category;
   // const userId = req.user._id;
+  const imageUrl = image;
+  console.log(imageUrl);
   const product =new Product({title:title, imageUrl:imageUrl, price:price, description:description, category: category, userId: req.user._id});
   product.save()
-  .then(res.redirect('products')).catch(err =>{
+  .then(
+    req.flash('sucess', 'Product Added Sucessfully'),
+    res.redirect('products')).catch(err =>{
     console.log(err);
   })
 };
@@ -42,13 +47,20 @@ exports.postProduct = (req, res, next) => {
 //getting added product
 
 exports.getAddedProducts = (req, res, next)=>{
-  Product.find()
+  let sucessMessage = req.flash('sucess');
+  if(sucessMessage.length > 0){
+    sucessMessage = sucessMessage[0]
+  }else{
+    sucessMessage = null;
+  }
+  Product.find({userId: req.user._id})
   .populate('userId')
     .then((products) => {
       res.render("admin/product", {
         prods: products,
         path: "/",
-        pageTitle: "Shop",
+        pageTitle: "Products",
+        sucessMessage: sucessMessage
       });
       console.log(products);
     })
@@ -82,13 +94,13 @@ exports.editProduct = (req, res, next) => {
 exports.PostEditProduct = (req, res, next)=>{
   const prodId = req.body.productId;
   const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
+  const imageUrl = req.files.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
 
 Product.findById(prodId).then(product =>{
   product.title = title;
-  product.imageUrl = imageUrl;
+  product.imageUrl = imagesUrl.map((image) => image.path);
   product.price = price;
   product.description = description;
   
@@ -96,6 +108,7 @@ Product.findById(prodId).then(product =>{
 })
   .then(result =>{
     console.log(result);
+    req.flash('sucess', 'Product Edited Sucessfully')
     res.redirect('products')
 
   }).catch(err =>{
@@ -115,6 +128,7 @@ exports.deleteProduct = (req, res) => {
       }
     })
     .then(() => {
+      req.flash('sucess', 'Product Deleted Sucessfully')
       res.redirect('products'); // Redirect after all promises are resolved
     })
     .catch(err => {

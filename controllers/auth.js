@@ -2,6 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const {validationResult} = require('express-validator')
 const transporter = nodemailer.createTransport({
   host: 'smtp.mailosaur.net',
   port: 587,
@@ -80,7 +81,7 @@ exports.login = (req, res, next) => {
     errormessage = errormessage[0];
   }else{
     errormessage=null
-  }
+  };
   let sucessMessage = req.flash('sucess');
   if(sucessMessage.length > 0){
     sucessMessage = sucessMessage[0]
@@ -98,6 +99,15 @@ exports.login = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  const errors = validationResult(req);
+
+  if(!errors.isEmpty()){
+    return res.status(422).render("authentication/login", {
+      pageTitle: "Log in",
+      isAuthenticated:false,
+      errorMessage:errors.array()
+    });
+  }
   User.findOne({ email: email })
     .then((user) => {
       if (!user) {

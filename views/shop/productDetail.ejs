@@ -27,8 +27,10 @@
           <div class="showcase">
             <div class="showcase-banner">
 
-              <img src="..<%= prods.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
-              <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+              <% if (prods.imageUrl.length > 0 ){ %>
+                <img src="/<%= prods.imageUrl[0] %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+              <img src="/<%= prods.imageUrl[1] %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+              <% } %>
 
               <p class="showcase-badge">15%</p>
 
@@ -84,15 +86,13 @@
           </div>          
             <div class="showcaseDetails">
             <div class="productImages">
-              <div class="image">
-                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
-              </div>
-              <div class="image">
-                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
-              </div>
-              <div class="image">
-                <img src="../images/products/jacket-2.jpg" alt="" class="thumbnail">
-              </div>
+              <% for(let product of prods.imageUrl) { %>
+                <div class="image">
+                  <img src="/<%= product %>" alt="" class="thumbnail">
+                </div>
+              <% } %>
+              
+             
             </div>
             <div class="lightbox">
               <img src="" alt="Enlarged Image" class="enlarged-image">

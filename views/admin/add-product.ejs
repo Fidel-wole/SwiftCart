@@ -1,16 +1,22 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="../css/add-product.css">
+<link rel="stylesheet" href="../../css/add-product.css">
 </head>
 <body>
    
     
     <%- include('../includes/nav.ejs') %>
     <div class="add-product">
-    <form action="<% if (editing) { %>edit-product<% } else { %>add-product<% }%>", method="post">
+        
+    <form action="<% if (editing) { %>edit-product<% } else { %>add-product<% }%>" enctype="multipart/form-data" method="post">
+        <input type="text" name="_csrf" value="<%= csrfToken %>">
         <label for="title">Title</label>
 <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title%><% } %>">
-<label for="ImageURL">ImageURL</label>
-<input type="text" name="imageUrl" id="image" value="<% if (editing) { %><%= product.imageUrl%><% } %>">
+
+<!-- <label for="ImageURL">ImageURL</label>
+<input type="text" name="imageUrl" id="image" value="<% if (editing) { %><%= product.imageUrl%><% } %>"> -->
+
+<label for="image">Select Image</label>
+<input type="file" name="image" id="image" value="<% if (editing) { %> <% for ( prods of product.imageUrl) { %> <%= prods%> %>  <%}%> <% } %>" multiplet>
 <label for="price">Price</label>
 <input type="number" name="price" step="0.01" id="price" value="<% if (editing) { %><%= product.price%><% } %>" >
 <label for="description">Category</label>

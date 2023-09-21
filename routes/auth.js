@@ -1,6 +1,6 @@
 const express = require('express');
-
 const router = express.Router();
+const userValidator = require('../validators/userValidator')
 const auth = require('../controllers/auth');
 
 router.get('/', auth.login);

@@ -5,18 +5,18 @@
 
    
     <% if(orders.length > 0) { %>
-        <% orders.forEach(prods => { %>
-<h1><%= prods._id %></h1>
-<% prods.products.forEach(product =>{ %>
+        <% orders.forEach(order => { %>
+<p><%= order._id %></p>
+<% order.products.forEach(product =>{ %>
 <li><%= product.product.title %></li>
-<span><%= product.quantity %></span>
+<span><%= product.quantity %>  - <a href="/orders/<%= order._id %>">Invoice</a></span>
 <%});%>
 
 <%}) %>
 <%}else { %> 
 <h1>No Products</h1>
 <% } %>
-
+"
 
     <%- include('../includes/footer.ejs') %>
 </body>

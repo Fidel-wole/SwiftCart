@@ -76,11 +76,10 @@
                   </div>
 <div class="price-box">
     <a href="edit-product/<%= product._id %>?edit=true" class="banner-btn">Edit</a>
-    <form action="delete-product" method="post">
       <input type="hidden" value="<%= csrfToken %>" name="_csrf"> 
       <input type="hidden" name="productId" value="<%= product._id %>">
-      <button class="btn-newsletter">Delete</button>
-    </form>
+      <button class="btn" type="button" onclick="deleteProduct(this)">Delete</button>
+  
   
 </div>
                 </div>
@@ -100,4 +99,5 @@
       </div>
 
     </div>
+    <script src="/js/admin.js"></script>
 </html>

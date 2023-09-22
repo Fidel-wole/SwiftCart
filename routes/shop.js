@@ -22,6 +22,7 @@ router.post('/cart-delete-item', productController.postCartDelete);
 router.post('/order', productController.postOrder);
 router.get('/orders', auth, productController.getOrder);
 
+router.get('/orders/:orderId', auth, productController.getInvoice);
 //logout
 
 router.post('/logout', productController.logout);

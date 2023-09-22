@@ -16,7 +16,7 @@
 <input type="text" name="imageUrl" id="image" value="<% if (editing) { %><%= product.imageUrl%><% } %>"> -->
 
 <label for="image">Select Image</label>
-<input type="file" name="image" id="image" value="<% if (editing) { %> <% for ( prods of product.imageUrl) { %> <%= prods%> %>  <%}%> <% } %>" multiplet>
+<input type="file" name="image" id="image" value="<% if (editing) { %> <% for ( prods of product.imageUrl) { %> <%= prods%> %>  <%}%> <% } %>" multiple>
 <label for="price">Price</label>
 <input type="number" name="price" step="0.01" id="price" value="<% if (editing) { %><%= product.price%><% } %>" >
 <label for="description">Category</label>

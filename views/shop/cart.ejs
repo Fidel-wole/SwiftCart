@@ -19,9 +19,10 @@
           <div class="showcase">
             <a href="/product/<%= prods.productId._id %>">
             <div class="showcase-banner">
-
-              <img src="..<%= prods.productId.imageUrl %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
-              <img src="../images/products/jacket-2.jpg" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+              <% if (prods.productId.imageUrl.length > 0 ){ %>
+              <img src="/<%= prods.productId.imageUrl[0] %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+              <img src="/<%= prods.productId.imageUrl[1] %>" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+            <% } %>
 
               <p class="showcase-badge">15%</p>
 
@@ -52,7 +53,7 @@
               <div class="showcase-category"><%= prods.productId.title %></div>
 
               <div>
-                <h3 class="showcase-title"><%= prods.productId.description %></h3>
+                <h3 class="showcase-title"><%= prods.productId.category %></h3>
               </div>
 
               <div class="showcase-rating">
@@ -87,6 +88,7 @@
     </div>
     <% if(products.length > 0) { %>
     <form method="post" action="/order" class="order">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <button type="submit" class="banner-btn" style="width: 100%; margin-top: 1rem;">Place Order</button>
     </form>
     <% }else { %>

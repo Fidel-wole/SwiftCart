@@ -3,6 +3,9 @@ const Product = require("../models/product");
 //order model
 const Order = require("../models/order");
 
+const fs = require('fs');
+const pdfDocument = require('pdfkit');
+const path = require('path');
 //getting of products controller
 exports.getProducts = (req, res, next) => {
   Product.find()
@@ -127,7 +130,35 @@ exports.getOrder = (req, res, next)=>{
   
 }
 
-exports.logout = (req, res, nect) =>{
+
+// invoice controller
+exports.getInvoice= (req, res, next)=>{
+const orderId = req.params.orderId;
+Order.findById(orderId).then(order =>{
+  if(!order){
+    return nect(new Error('No Order Found')); 
+  }
+  const invoiceName = 'invoice-' + orderId + '.pdf';
+const invoicePath = path.join('data', 'invoice', invoiceName);
+const pdfDoc = new pdfDocument();
+res.setHeader('Content-Type', 'application/pdf');
+res.setHeader('Content-Disposition', 'inline: filename="' + invoiceName + '"');
+
+pdfDoc.pipe(fs.createWriteStream(invoicePath));
+pdfDoc.pipe(res);
+pdfDoc.text('Invoice');
+pdfDoc.end();
+// fs.readFile(invoicePath, (err, data)=>{
+//   if(err){
+//     return next(err)
+//   }
+//
+//  res.send(Data)
+// })
+})
+
+}
+exports.logout = (req, res, next) =>{
   req.session.destroy(err =>{
     console.log(err);
     res.redirect('/')

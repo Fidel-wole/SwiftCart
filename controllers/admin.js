@@ -119,7 +119,7 @@ Product.findById(prodId).then(product =>{
 
 // Delete a product and trigger cart cleanup
 exports.deleteProduct = (req, res) => {
-  const productId = req.body.productId; // Assuming the product ID is in the request body
+  const productId = req.params.productId; // Assuming the product ID is in the request body
 
   Product.findByIdAndRemove(productId)
     .then((deletedProduct) => {
@@ -128,8 +128,10 @@ exports.deleteProduct = (req, res) => {
       }
     })
     .then(() => {
-      req.flash('sucess', 'Product Deleted Sucessfully')
-      res.redirect('products'); // Redirect after all promises are resolved
+      console.log('Product Deleted');
+      res.status(500).json({message: 'Product deleted sucessfully'});
+      // req.flash('sucess', 'Product Deleted Sucessfully')
+      // res.redirect('products'); // Redirect after all promises are resolved
     })
     .catch(err => {
       console.log(err);
